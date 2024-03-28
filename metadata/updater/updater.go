@@ -619,12 +619,12 @@ func (update *Updater) persistMetadata(roleName string, data []byte) error {
 	}
 	// caching enabled, proceed with persisting the metadata locally
 	fileName := filepath.Join(update.cfg.LocalMetadataDir, fmt.Sprintf("%s.json", url.QueryEscape(roleName)))
-	cwd, err := os.Getwd()
-	if err != nil {
-		return err
-	}
+	// cwd, err := os.Getwd()
+	// if err != nil {
+	// 	return err
+	// }
 	// create a temporary file
-	file, err := os.CreateTemp(cwd, "tuf_tmp")
+	file, err := os.CreateTemp(update.cfg.LocalMetadataDir, "tuf_tmp")
 	if err != nil {
 		return err
 	}
